@@ -41,6 +41,16 @@ describe Hanami::View::Rendering::LayoutScope do
     end
   end
 
+  describe "#local" do
+    it 'returns content in local method' do
+      @scope.local(:bar).must_equal('y')
+    end
+
+    it 'returns nothing' do
+      @scope.local(:not_exist).must_equal nil
+    end
+  end
+
   describe '#method_missing' do
     describe 'method is defined on scope' do
       it 'returns result of foo method' do
